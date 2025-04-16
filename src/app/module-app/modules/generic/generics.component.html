@@ -1,0 +1,55 @@
+<mat-card appearance="outlined" style="width: 70%; margin: 50px auto;">
+    <mat-card-header>
+        <mat-card-title>
+            <p>lista de genéricos</p>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div>
+            <button style="margin-right: 12px;" mat-flat-button color="primary" (click)="new()">Nuevo genérico</button>
+            <button mat-flat-button color="accent" (click)="medicine()">Ir a medicamentos</button>
+        </div>
+
+        <table mat-table [dataSource]="generic" class="mat-elevation-z8" style="margin-top: 20px;">
+
+            <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="Id">
+                <th mat-header-cell *matHeaderCellDef> Id </th>
+                <td mat-cell *matCellDef="let element"> {{element.Id}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="Name">
+                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+            </ng-container>
+
+            <!-- Description Column -->
+            <ng-container matColumnDef="Description">
+                <th mat-header-cell *matHeaderCellDef> Descripción </th>
+                <td mat-cell *matCellDef="let element"> {{element.Description}} </td>
+            </ng-container>
+
+
+            <!-- Action Column -->
+            <ng-container matColumnDef="Action">
+                <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-icon-button color="primary" (click)="edit(element)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button color="warn" (click)="remove(element)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+    </mat-card-content>
+</mat-card>

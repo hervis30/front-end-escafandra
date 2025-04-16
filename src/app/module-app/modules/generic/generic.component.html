@@ -1,0 +1,32 @@
+<mat-card appearance="outlined" style="width: 50%; margin: 50px auto;">
+  <mat-card-header>
+    <mat-card-title style="display: block; width: 100%; text-align: center; font-size: 20px;">
+      {{ action ? 'Actualizar Genérico' : 'Crear Nuevo Genérico' }}
+    </mat-card-title>
+  </mat-card-header>
+  <div class="mat-elevation-z2"
+    style="width: 45%; padding: 30px; margin: 50px auto; display: flex; justify-content: center; ">
+
+    <form [formGroup]="formGroup">
+      <div class="flex">
+        <mat-form-field>
+          <mat-label>Nombre de genéricos</mat-label>
+          <input matInput formControlName="Name" placeholder="Genérico" maxlength="50">
+        </mat-form-field>
+      </div>
+      <div class="flex">
+        <mat-form-field>
+          <mat-label>Descripción</mat-label>
+          <textarea matInput formControlName="Description" placeholder="Descripción" maxlength="400"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="flex">
+        <button mat-flat-button color="primary" (click)="save()">
+          {{ action ? 'Actualizar' : 'Guardar' }}
+        </button>
+        <button mat-flat-button color="warn" (click)="back()" style="margin-left: 10px;">Volver</button>
+      </div>
+
+    </form>
+  </div>
+</mat-card>
